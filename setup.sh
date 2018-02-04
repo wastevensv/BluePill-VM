@@ -2,7 +2,7 @@
 LAUNCH_USER="${LAUNCH_USER:-vagrant}"
 rm -rfv /tmp/setup-downloads
 
-sudo apt-get install -y unzip usbutils minicom gcc-arm-none-eabi gdb-arm-none-eabi libc6-i386
+sudo apt-get install -y unzip usbutils minicom gcc-arm-none-eabi gdb-arm-none-eabi libc6-i386 openocd screen
 
 mkdir -v /tmp/setup-downloads
 cd /tmp/setup-downloads
@@ -22,7 +22,8 @@ cd hardware
 unzip /tmp/setup-downloads/bp-hw.zip
 cd /home/$LAUNCH_USER/.bluepill-env
 
-mv /tmp/45-bluepill.rules /etc/udev/rules.d
+mv -v /tmp/udev-rules/* /etc/udev/rules.d
+rmdir /tmp/udev-rules/
 udevadm control --reload-rules
 
 usermod -aG dialout,plugdev $LAUNCH_USER

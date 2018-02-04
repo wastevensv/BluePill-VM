@@ -3,5 +3,6 @@
    "customBuildProperties": "tools.ctags.path=/home/vagrant/.bluepill-env/tools/ctags/5.8-arduino11,build.warn_data_percentage=75,runtime.tools.arm-none-eabi-gcc.path=/usr,runtime.tools.stm32tools.path=/home/vagrant/.bluepill-env/packages/stm32duino",
   "fqbn":"stm32duino:STM32F1:genericSTM32F103C:device_variant=STM32F103C8,upload_method=DFUUploadMethod,cpu_speed=speed_72mhz,opt=ogstd",
   "hardwareFolders": "/home/vagrant/.bluepill-env/packages,/home/vagrant/.bluepill-env/hardware",
+  "otherLibrariesFolders":"libraries",
   "toolsFolders": "/home/vagrant/.bluepill-env/packages"
 }

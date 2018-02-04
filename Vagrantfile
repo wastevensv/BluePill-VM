@@ -44,7 +44,8 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder "bluepill", "/home/vagrant/bluepill", create: true, type: "virtualbox"
+  config.vm.synced_folder "project", "/home/vagrant/project", create: true, type: "virtualbox"
+  # config.vm.synced_folder "debug", "/home/vagrant/debug", create: true, type: "virtualbox"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
 
@@ -74,6 +75,16 @@ Vagrant.configure("2") do |config|
                   "--target", :id,
                   "--vendorid","1eaf",
                   "--productid","0003"]
+    vb.customize ["usbfilter", "add", "0",
+                  "--name", "STLINK-v2",
+                  "--target", :id,
+                  "--vendorid","0483",
+                  "--productid","3748"]
+    vb.customize ["usbfilter", "add", "0",
+                  "--name", "STLINK-v2-1",
+                  "--target", :id,
+                  "--vendorid","0483",
+                  "--productid","374b"]
   end
 
   #
@@ -87,6 +98,6 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision "file", source: "45-bluepill.rules", destination: "/tmp/45-bluepill.rules"
+  config.vm.provision "file", source: "udev-rules", destination: "/tmp/udev-rules"
   config.vm.provision "shell", name: "setup", path: "setup.sh"
 end
