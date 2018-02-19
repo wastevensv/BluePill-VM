@@ -4,3 +4,7 @@ ATTRS{idProduct}=="0003", ATTRS{idVendor}=="1eaf", MODE="664", GROUP="plugdev" S
 ATTRS{idProduct}=="0004", ATTRS{idVendor}=="1eaf", MODE="664", GROUP="plugdev" SYMLINK+="maple"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1eaf", ATTRS{idProduct}=="0004", MODE:="0664"
 KERNEL=="ttyACM*", ATTRS{idVendor}=="1eaf", ATTRS{idProduct}=="0004", MODE:="0664"
+
+# DapBoot DFU Rules
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="db42", GROUP="plugdev", MODE="0666"
+ATTRS{idVendor}=="1209", ATTRS{idProduct}=="db42", GROUP="plugdev", MODE="664", SYMLINK+="dapboot"

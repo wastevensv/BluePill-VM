@@ -1,10 +1,9 @@
-# stm32 discovery boards, with onboard st/linkv2
-# ie, STM32L, STM32F4.
-# STM32VL has st/linkv1, which is quite different
+# stm32 discovery boards, with onboard st/linkv1
+# ie, STM32VL
 
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", \
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3744", \
     MODE:="0666", \
-    SYMLINK+="stlinkv2_%n"
+    SYMLINK+="stlinkv1_%n"
 
 # If you share your linux system with other users, or just don't like the
 # idea of write permission for everybody, you can replace MODE:="0666" with
