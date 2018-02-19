@@ -15,9 +15,10 @@ GDB_BIN=arm-none-eabi-gdb
 
 build: $(TARGET).bin
 
-upload: $(TARGET).bin
+flash: $(TARGET).bin
 	echo "Uploading to board..."
-	$(TOOL_DIR)/upload-reset /dev/ttyACM0 1500
+	echo "Push reset."
+	sleep 2
 	$(TOOL_DIR)/dfu-util/dfu-util -d 1EAF:0003 -a 2 -D $< -R
 
 $(TARGET).bin: $(TARGET)
