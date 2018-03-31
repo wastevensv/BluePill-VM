@@ -1,0 +1,116 @@
+
+src/usbser.h,1025
+#define _USBSER_H__USBSER_H_8,186
+static const struct usb_device_descriptor usb_dev = {usb_dev9,205
+static const struct usb_endpoint_descriptor comm_endp[] = {{comm_endp31,773
+static const struct usb_endpoint_descriptor data_endp[] = {{data_endp40,1025
+	struct usb_cdc_header_descriptor header;header57,1476
+	struct usb_cdc_call_management_descriptor call_mgmt;call_mgmt58,1518
+	struct usb_cdc_acm_descriptor acm;acm59,1572
+	struct usb_cdc_union_descriptor cdc_union;cdc_union60,1608
+} __attribute__((packed)) cdcacm_functional_descriptors = {cdcacm_functional_descriptors61,1652
+static const struct usb_interface_descriptor comm_iface[] = {{comm_iface91,2519
+static const struct usb_interface_descriptor data_iface[] = {{data_iface108,2992
+static const struct usb_interface ifaces[] = {{ifaces122,3334
+static const struct usb_config_descriptor usb_config = {usb_config130,3490
+static const char *usb_strings[] = {usb_strings143,3789
+uint8_t usbd_control_buffer[128];usbd_control_buffer150,3932
+
+src/main.c,332
+static void clock_setup(void)clock_setup28,1016
+static void spi_setup(void) {spi_setup44,1435
+static void gpio_setup(void)gpio_setup83,2669
+static void blink(uint8_t count) {blink90,2850
+static void itoh(uint32_t num, char *buf, size_t buf_len) {itoh117,3411
+#define BUF_LEN BUF_LEN124,3601
+int main(void)main125,3619
+
+src/usbacm.c,297
+int cdcacm_control_request(usbd_device *usbd_dev, struct usb_setup_data *req, uint8_t **buf,cdcacm_control_request28,1001
+void cdcacm_data_rx_cb(usbd_device *usbd_dev, uint8_t ep)cdcacm_data_rx_cb64,2009
+void cdcacm_set_config(usbd_device *usbd_dev, uint16_t wValue)cdcacm_set_config85,2510
+
+src/usb.c,2762
+	volatile	uint16_t	m_get_idx;m_get_idx37,1230
+	volatile	uint16_t	m_put_idx;m_put_idx38,1260
+				uint8_t		m_entry[1024];	// Size must be a power of 2m_entry39,1290
+} buf_t;buf_t40,1347
+static buf_t	usb_serial_rx_buf;usb_serial_rx_buf42,1357
+static buf_t	usb_serial_tx_buf;usb_serial_tx_buf43,1389
+static bool   	usb_serial_need_empty_tx = false;usb_serial_need_empty_tx44,1421
+static usbd_device *g_usbd_dev = NULL;g_usbd_dev46,1471
+static bool g_usbd_is_connected = false;g_usbd_is_connected47,1510
+static char usb_serial[13];	// 12 digits plus a null terminatorusb_serial49,1552
+static const struct usb_device_descriptor dev = {dev57,1806
+static const struct usb_endpoint_descriptor comm_endp[] = {{comm_endp79,2408
+static const struct usb_endpoint_descriptor data_endp[] = {{data_endp88,2659
+	struct usb_cdc_header_descriptor header;header105,3111
+	struct usb_cdc_call_management_descriptor call_mgmt;call_mgmt106,3153
+	struct usb_cdc_acm_descriptor acm;acm107,3207
+	struct usb_cdc_union_descriptor cdc_union;cdc_union108,3243
+} __attribute__((packed)) cdcacm_functional_descriptors = {cdcacm_functional_descriptors109,3287
+static const struct usb_interface_descriptor comm_iface[] = {{comm_iface139,4155
+static const struct usb_interface_descriptor data_iface[] = {{data_iface156,4628
+static const struct usb_interface ifaces[] = {{ifaces170,4971
+static const struct usb_config_descriptor config = {config178,5128
+static const char *usb_strings[] = {usb_strings192,5460
+#define NUM_USB_STRINGS NUM_USB_STRINGS197,5551
+static const struct usb_cdc_line_coding line_coding = {line_coding199,5623
+uint8_t usbd_control_buffer[128];usbd_control_buffer207,5842
+#define USB_CDC_REQ_GET_LINE_CODING	USB_CDC_REQ_GET_LINE_CODING209,5877
+static int cdcacm_control_request(usbd_device *usbd_dev,cdcacm_control_request211,5950
+static void cdcacm_data_rx_cb(usbd_device *usbd_dev, uint8_t ep)cdcacm_data_rx_cb240,6675
+static void cdcacm_sof_callback(void) {cdcacm_sof_callback265,7481
+void otg_fs_isr(void)otg_fs_isr289,8203
+static void cdcacm_set_config(usbd_device *usbd_dev, uint16_t wValue)cdcacm_set_config296,8277
+bool usb_vcp_is_connected(void) {usb_vcp_is_connected312,8761
+uint16_t usb_vcp_avail(void) {usb_vcp_avail316,8827
+int usb_vcp_recv_byte(void) {usb_vcp_recv_byte320,8898
+void usb_vcp_send_byte(uint8_t ch) {usb_vcp_send_byte327,9024
+void usb_vcp_send_strn(const char *str, size_t len) {usb_vcp_send_strn333,9143
+void usb_vcp_send_strn_cooked(const char *str, size_t len) {usb_vcp_send_strn_cooked339,9285
+static int usb_putc(void *out_param, int ch) {usb_putc348,9488
+static void fill_usb_serial(void) {fill_usb_serial357,9640
+void usb_vcp_init(void) {usb_vcp_init393,10779
+
+src/CBUF.h,1051
+#define CBUF_HCBUF_H64,2003
+#define CBUF_Init(CBUF_Init74,2230
+#define CBUF_Len(CBUF_Len81,2404
+#define CBUF_Size(CBUF_Size86,2535
+#define CBUF_Space(CBUF_Space92,2710
+#define CBUF_Mask(CBUF_Mask98,2864
+#define CBUF_Wrapped(CBUF_Wrapped103,2991
+#define CBUF_ContigLen(CBUF_ContigLen109,3187
+#define CBUF_ContigSpace(CBUF_ContigSpace115,3415
+#define CBUF_Push(CBUF_Push123,3696
+#define CBUF_Pop(CBUF_Pop129,3869
+#define CBUF_GetLastEntryPtr(CBUF_GetLastEntryPtr135,4022
+#define CBUF_GetPushEntryPtr(CBUF_GetPushEntryPtr145,4441
+#define CBUF_AdvancePushIdx(CBUF_AdvancePushIdx155,4842
+#define CBUF_AdvancePushIdxBy(CBUF_AdvancePushIdxBy156,4903
+#define CBUF_AdvancePopIdx(CBUF_AdvancePopIdx163,5081
+#define CBUF_AdvancePopIdxBy(CBUF_AdvancePopIdxBy164,5142
+#define CBUF_Get(CBUF_Get171,5307
+#define CBUF_GetEnd(CBUF_GetEnd178,5492
+#define CBUF_GetPopEntryPtr(CBUF_GetPopEntryPtr184,5646
+#define CBUF_IsEmpty(CBUF_IsEmpty190,5789
+#define CBUF_IsFull(CBUF_IsFull196,5903
+#define CBUF_Error(CBUF_Error202,6049
+
+src/usb.h,27
+#define USB_HUSB_H19,748
+
+Makefile,475
+PREFIX = arm-none-eabi-PREFIX1,0
+CPP = g++CPP2,24
+CC = gccCC3,34
+LD = gccLD4,43
+OBJDUMP = objdumpOBJDUMP5,52
+OBJCOPY = objcopyOBJCOPY6,70
+DEVICE = stm32f103c8DEVICE10,130
+LIBNAME = opencm3_stm32f1LIBNAME11,151
+OPENCM3_DIR     = /home/`whoami`/.bluepill-env/libopencm3OPENCM3_DIR13,178
+FP_FLAGS	?= -msoft-floatFP_FLAGS18,291
+ARCH_FLAGS = -mthumb -mcpu=cortex-m3 $(FP_FLAGS) -mfix-cortex-m3-ldrdARCH_FLAGS19,316
+LDSCRIPT 	= ../bluepill.ldLDSCRIPT24,487
