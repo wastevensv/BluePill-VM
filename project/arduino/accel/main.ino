@@ -24,9 +24,8 @@
  GND ---------------------- GND
  */
 
-#include <Wire.h>
-TwoWire WIRE1(1);
-#define Wire WIRE1
+//TwoWire WIRE2(2);
+//#define Wire WIRE2
 
 #include "quaternionFilters.h"
 #include "MPU9250.h"
