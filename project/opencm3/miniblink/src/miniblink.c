@@ -26,15 +26,15 @@ static void gpio_setup(void)
 	/* Manually: */
 	// RCC_APB2ENR |= RCC_APB2ENR_IOPCEN;
 	/* Using API functions: */
-	rcc_periph_clock_enable(RCC_GPIOA);
+	rcc_periph_clock_enable(RCC_GPIOC);
 
 	/* Set GPIO5 (in GPIO port A) to 'output push-pull'. */
 	/* Manually: */
 	// GPIOA_CRH = (GPIO_CNF_OUTPUT_PUSHPULL << (((5 - 8) * 4) + 2));
 	// GPIOA_CRH |= (GPIO_MODE_OUTPUT_2_MHZ << ((5 - 8) * 4));
 	/* Using API functions: */
-	gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
-		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO5);
+	gpio_set_mode(GPIOC, GPIO_MODE_OUTPUT_2_MHZ,
+		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
 }
 
 int main(void)
