@@ -2,6 +2,7 @@
 *.d
 *.bin
 !project/debug/*.bin
+.#*
 *.swp
 *.elf
 *.log
